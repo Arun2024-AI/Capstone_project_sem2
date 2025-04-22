@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <h1>Hello Recipes App</h1>
+      <h3>Start Project</h3>
     </div>
   );
 }
