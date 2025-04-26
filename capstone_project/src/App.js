@@ -5,6 +5,7 @@ const App = () => {
   const [query, setQuery] = useState("");
   const [meals, setMeals] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Fetch meals from the API
   const searchMeals = async () => {
@@ -13,6 +14,9 @@ const App = () => {
       return;
     }
 
+    setLoading(true); // Start loading state
+    setMeals([]); // Clear previous meals before fetching new ones
+    setError(""); // Reset error state
     try {
       const res = await fetch(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
@@ -22,6 +26,7 @@ const App = () => {
       if (data.meals) {
         setMeals(data.meals);
         setError("");
+        speakMealName(data.meals[0].strMeal);  // Speak the first meal name
       } else {
         setMeals([]);
         setError("No meals found.");
@@ -29,6 +34,8 @@ const App = () => {
     } catch (err) {
       console.error("API fetch error:", err);
       setError("Something went wrong while fetching data.");
+    } finally {
+      setLoading(false); // End loading state
     }
   };
 
@@ -70,6 +77,13 @@ const App = () => {
     };
   };
 
+  // Function to speak the meal name using SpeechSynthesis
+  const speakMealName = (mealName) => {
+    const speech = new SpeechSynthesisUtterance(mealName);
+    speech.lang = "en-US";
+    window.speechSynthesis.speak(speech);
+  };
+
   return (
     <div className="app">
       <h1>🎤 Recipe Finder</h1>
@@ -85,19 +99,30 @@ const App = () => {
         <button onClick={handleVoiceSearch}>🎙️ Speak</button>
       </div>
 
-      {error && <p className="error">{error}</p>}
+      {loading && <p className="loading">Loading recipes...</p>} {/* Show loading */}
+      {error && <p className="error">{error}</p>} {/* Show error if any */}
 
       <div className="meal-list">
-        {meals.map((meal) => (
-          <div key={meal.idMeal} className="meal-card">
-            <h3>{meal.strMeal}</h3>
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <p>{meal.strInstructions.substring(0, 100)}...</p>
-          </div>
-        ))}
+        {meals.length > 0 ? (
+          meals.map((meal) => (
+            <div key={meal.idMeal} className="meal-card">
+              <h3>{meal.strMeal}</h3>
+              <img src={meal.strMealThumb} alt={meal.strMeal} />
+              <p>{meal.strInstructions.substring(0, 100)}...</p>
+            </div>
+          ))
+        ) : (
+          <p>No meals found.</p>
+        )}
       </div>
     </div>
   );
 };
 
 export default App;
+
+
+
+
+
+
