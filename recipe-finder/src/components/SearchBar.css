@@ -1,0 +1,35 @@
+.search-bar {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  background-color: var(--surface-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-input-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-bar .MuiTextField-root {
+  background-color: white;
+}
+
+.search-bar .MuiOutlinedInput-root {
+  border-radius: var(--border-radius);
+}
+
+.search-bar .MuiIconButton-root {
+  padding: 8px;
+}
+
+.search-bar .MuiIconButton-root:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    margin: 0 1rem 1.5rem;
+  }
+} 

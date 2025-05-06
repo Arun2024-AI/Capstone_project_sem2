@@ -1,0 +1,41 @@
+.bookmarks-page {
+  padding: 2rem 0;
+}
+
+.bookmarks-page h1 {
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.no-bookmarks {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.no-bookmarks p {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.no-bookmarks p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .bookmarks-page {
+    padding: 1rem 0;
+  }
+
+  .bookmarks-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .no-bookmarks {
+    padding: 2rem;
+  }
+} 
