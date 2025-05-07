@@ -37,6 +37,27 @@ function Header() {
           ))}
         </Box>
 
+        <Box className="auth-buttons">
+          <Button
+            component={Link}
+            to="/login"
+            variant="outlined"
+            color="inherit"
+            className="login-btn"
+          >
+            Login
+          </Button>
+          <Button
+            component={Link}
+            to="/register"
+            variant="contained"
+            color="primary"
+            className="register-btn"
+          >
+            Register
+          </Button>
+        </Box>
+
         <IconButton onClick={toggleTheme} color="inherit" className="theme-toggle">
           {isDarkMode ? <Brightness7 /> : <Brightness4 />}
         </IconButton>

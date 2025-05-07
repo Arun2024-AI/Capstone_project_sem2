@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--primary-color);
+  background-color: var(--header-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -7,42 +7,64 @@
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  position: relative;
 }
 
 .logo {
   font-weight: 700;
-  color: white;
+  color: inherit;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: absolute;
+  left: 4rem;
 }
 
 .nav-links {
   display: flex;
   gap: 1rem;
-  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.nav-links .MuiButton-root {
-  color: white;
-  text-transform: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: var(--border-radius);
-  transition: background-color var(--transition-speed) ease;
+.nav-links button {
+  color: inherit;
 }
 
-.nav-links .MuiButton-root:hover {
+.nav-links button.active {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.nav-links .MuiButton-root.active {
-  background-color: rgba(255, 255, 255, 0.2);
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  right: 4rem;
+}
+
+.login-btn {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.login-btn:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.register-btn {
+  background-color: var(--primary-color);
+}
+
+.register-btn:hover {
+  background-color: var(--primary-color-dark);
 }
 
 .theme-toggle {
-  margin-left: 1rem;
+  position: absolute;
+  left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -52,6 +74,24 @@
 
   .nav-links {
     display: none;
+  }
+
+  .auth-buttons {
+    right: 3rem;
+  }
+
+  .auth-buttons button {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .logo {
+    left: 3rem;
+  }
+
+  .theme-toggle {
+    left: 0.25rem;
+    margin-left: 0.25rem;
   }
 
   .nav-links.mobile {

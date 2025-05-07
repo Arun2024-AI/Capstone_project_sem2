@@ -4,11 +4,14 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme } from './hooks/useTheme';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import RecipeDetails from './pages/RecipeDetails';
 import Bookmarks from './pages/Bookmarks';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import './styles/App.css';
 
 function App() {
@@ -47,8 +50,11 @@ function App() {
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </ThemeProvider>
   );
