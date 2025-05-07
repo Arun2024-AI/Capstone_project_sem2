@@ -2,7 +2,9 @@ import { useState, useCallback } from 'react';
 
 const API_BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 const MAX_RETRIES = 3;
-const RETRY_DELAY = 1000; // 1 second
+const RETRY_DELAY = 1000; 
+
+
 
 export function useRecipeSearch() {
   const [recipes, setRecipes] = useState([]);
