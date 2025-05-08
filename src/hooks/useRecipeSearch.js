@@ -29,6 +29,9 @@ export function useRecipeSearch() {
     try {
       const response = await fetch(url, options);
       if (!response.ok) {
+
+
+
         throw { status: response.status, message: response.statusText };
       }
       return await response.json();
@@ -78,6 +81,9 @@ export function useRecipeSearch() {
       setLoading(false);
     }
   }, []);
+
+  // id check
+  
 
   const getRecipeById = useCallback(async (id) => {
     setLoading(true);
